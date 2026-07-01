@@ -3,140 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Ejecutivo & Enlaces Premium</title>
+    <title>Ecosistema Digital | Nombre del Creador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Estilos de Lujo: Minimalismo, Neomorfismo y Tonos Oscuros */
+        /* =========================================
+           RESET Y ESTILOS BASE (Nivel Avanzado)
+           ========================================= */
+        :root {
+            --bg-dark: #070708; /* Negro profundo mate */
+            --bg-card: rgba(255, 255, 255, 0.02); /* Vidrio sutil */
+            --glass-border: rgba(255, 255, 255, 0.06);
+            
+            /* Paleta de acento premium (Oro rosa / Cobre moderno) */
+            --accent-primary: #e0ac9a; 
+            --accent-secondary: #c98c76;
+            --accent-glow: rgba(224, 172, 154, 0.15);
+
+            --text-main: #ffffff;
+            --text-muted: #8a8a91;
+            
+            --soft-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            --transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); /* Animación suave */
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif; /* Tipografía limpia y moderna */
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background: radial-gradient(circle at top, #1a1a1a, #0a0a0a);
-            color: #ffffff;
+            background-color: var(--bg-dark);
+            /* Gradiente de fondo radial suave */
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(201, 140, 118, 0.08) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(30, 30, 35, 0.3) 0px, transparent 50%);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 25px;
+            overflow-x: hidden;
         }
 
-        .container {
+        /* =========================================
+           CONTENEDOR MAESTRO (Glassmorphism)
+           ========================================= */
+        .master-container {
             width: 100%;
-            max-width: 420px;
+            max-width: 440px;
+            perspective: 1000px; /* Prepara para efectos 3D sutiles */
+        }
+
+        .profile-card {
+            background: var(--bg-card);
+            padding: 50px 35px 40px 35px;
+            border-radius: 35px; /* Bordes muy suaves */
+            backdrop-filter: blur(15px); /* Efecto vidrio esmerilado */
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--soft-shadow);
             text-align: center;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 40px 30px;
-            border-radius: 24px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        /* Destello sutil de fondo en la tarjeta */
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.01) 0%, transparent 60%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        /* =========================================
+           PERFIL (Estética Minimalista)
+           ========================================= */
+        .profile-header {
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            margin-bottom: 20px;
         }
 
         .profile-img {
-            width: 110px;
-            height: 110px;
+            width: 115px;
+            height: 115px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #d4af37; /* Detalle en oro premium */
-            margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Anillo de acento dinámico alrededor de la foto */
+        .avatar-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -6px; left: -6px; right: -6px; bottom: -6px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-primary);
+            opacity: 0.1;
+            transition: var(--transition);
+            transform: scale(1.05);
+        }
+
+        .profile-card:hover .avatar-wrapper::after {
+            opacity: 0.5;
+            transform: scale(1);
         }
 
         h1 {
-            font-size: 1.6rem;
+            font-size: 1.75rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            color: #ffffff;
+            letter-spacing: -0.5px; /* Tracking moderno */
+            background: linear-gradient(135deg, #fff 0%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Gradiente en texto */
+            margin-bottom: 6px;
         }
 
         .subtitle {
             font-size: 0.9rem;
-            color: #a0a0a0;
-            margin-bottom: 30px;
+            color: var(--text-muted);
+            font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
+        .bio {
+            font-size: 0.95rem;
+            color: #b0b0b5;
+            line-height: 1.6;
+            max-width: 320px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* =========================================
+           BOTONES (Neumorfismo Interactivo)
+           ========================================= */
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
 
         .btn-link {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 16px;
+            justify-content: space-between; /* Alineación moderna */
+            padding: 20px 25px;
             text-decoration: none;
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 14px;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            
+            /* Estilo Base: Neumorfismo Oscuro */
+            background: #09090b;
+            border: 1px solid rgba(255,255,255,0.01);
+            box-shadow: 
+                inset 2px 2px 5px rgba(0,0,0,0.2), 
+                inset -1px -1px 2px rgba(255,255,255,0.01);
         }
 
-        /* Efecto de iluminación al pasar el cursor */
+        /* Texto del botón */
+        .btn-text {
+            color: #d1d1d6;
+            font-size: 1.05rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        /* Icono de flecha minimalista */
+        .btn-arrow {
+            color: #4a4a4e;
+            font-size: 0.8rem;
+            transform: translateX(0);
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        /* EFECTO HOVER ÚNICO: Se vuelve blanco puro y 'brilla' */
         .btn-link:hover {
             background: #ffffff;
-            color: #0a0a0a;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+            border: 1px solid #ffffff;
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(255,255,255,0.1);
         }
 
+        .btn-link:hover .btn-text {
+            color: #000000;
+        }
+
+        .btn-link:hover .btn-arrow {
+            color: #000000;
+            transform: translateX(4px);
+        }
+
+        /* BOTÓN DE ACENTO (Destacado): Neumorfismo de Color */
         .btn-highlight {
-            border: 1px solid #d4af37;
-            background: rgba(212, 175, 55, 0.1);
+            background: linear-gradient(135deg, #121214 0%, #0a0a0c 100%);
+            border: 1px solid rgba(224, 172, 154, 0.08);
+            box-shadow: 
+                inset 2px 2px 5px rgba(0,0,0,0.3), 
+                0 0 15px var(--accent-glow);
         }
 
+        .btn-highlight .btn-text {
+            color: var(--accent-primary);
+        }
+
+        .btn-highlight .btn-arrow {
+            color: var(--accent-secondary);
+        }
+
+        /* Hover específico para el botón destacado */
         .btn-highlight:hover {
-            background: #d4af37;
-            color: #0a0a0a;
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            border: 1px solid var(--accent-primary);
+            box-shadow: 0 20px 40px var(--accent-glow);
         }
 
+        .btn-highlight:hover .btn-text,
+        .btn-highlight:hover .btn-arrow {
+            color: #000000;
+        }
+
+        /* =========================================
+           FOOTER (Sutil)
+           ========================================= */
         footer {
-            margin-top: 40px;
-            font-size: 0.75rem;
-            color: #555;
-            letter-spacing: 1px;
+            margin-top: 50px;
+            font-size: 0.7rem;
+            color: #4a4a4e;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* =========================================
+           RESPONSIVE (Ajustes Móviles)
+           ========================================= */
+        @media (max-width: 400px) {
+            .profile-card {
+                padding: 40px 25px 30px 25px;
+                border-radius: 25px;
+            }
+            .profile-img {
+                width: 100px; height: 100px;
+            }
+            h1 { font-size: 1.5rem; }
+            .btn-link { padding: 18px 20px; }
+            .btn-text { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Reemplazar con la URL de la foto del cliente -->
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" alt="Foto de Perfil" class="profile-img">
-        
-        <h1 id="userName">Nombre del Creador</h1>
-        <div class="subtitle" id="userTitle">Artista Digital & Diseñador</div>
-
-        <div class="links-container">
-            <!-- Enlace Destacado (Por ejemplo, para vender un e-book o curso) -->
-            <a href="#" class="btn-link btn-highlight" target="_blank">🌟 Adquiere mi Nuevo E-Book Aquí</a>
+    <div class="master-container">
+        <div class="profile-card">
             
-            <!-- Enlaces Estándar -->
-            <a href="#" class="btn-link" target="_blank">📸 Portafolio en Instagram</a>
-            <a href="#" class="btn-link" target="_blank">🎨 Galería de Arte NFT</a>
-            <a href="#" class="btn-link" target="_blank">📺 Canal de YouTube</a>
-            <a href="#" class="btn-link" target="_blank">✉️ Contacto Directo</a>
-        </div>
+            <header class="profile-header">
+                <div class="avatar-wrapper">
+                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&q=80" alt="Avatar Premium" class="profile-img">
+                </div>
+                <h1>Nombre del Creador</h1>
+                <p class="subtitle">Artista Digital & Visionario</p>
+                <p class="bio">Curando experiencias visuales de alto impacto para marcas y coleccionistas exigentes.</p>
+            </header>
 
-        <footer>
-            DISEÑO EXCLUSIVO © 2026
-        </footer>
+            <nav class="links-container">
+                
+                <a href="#" class="btn-link btn-highlight" target="_blank">
+                    <span class="btn-text">🌟 Adquiere la Colección 'Genesis'</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                
+                <a href="#" class="btn-link" target="_blank">
+                    <span class="btn-text">📸 Portafolio de Fotografía</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                
+                <a href="#" class="btn-link" target="_blank">
+                    <span class="btn-text">🎨 Galería de Arte en Foundation</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                
+                <a href="#" class="btn-link" target="_blank">
+                    <span class="btn-text">📺 Masterclass de Edición Avanzada</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                
+                <a href="#" class="btn-link" target="_blank">
+                    <span class="btn-text">✉️ Consultoría Privada</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+
+            </nav>
+
+            <footer>
+                Edición Exclusiva // MMXXVI
+            </footer>
+
+        </div>
     </div>
 
-    <script>
-        // Script dinámico simple por si deseas conectar esta plantilla a un panel de control en el futuro
-        console.log("Estructura de interfaz premium cargada correctamente.");
-    </script>
 </body>
 </html>
