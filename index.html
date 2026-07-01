@@ -3,318 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecosistema Digital | Nombre del Creador</title>
+    <title>Ecosistema Digital Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* =========================================
-           RESET Y ESTILOS BASE (Nivel Avanzado)
+           VARIABLES Y DISEÑO MAESTRO
            ========================================= */
         :root {
-            --bg-dark: #070708; /* Negro profundo mate */
-            --bg-card: rgba(255, 255, 255, 0.02); /* Vidrio sutil */
-            --glass-border: rgba(255, 255, 255, 0.06);
+            --bg-ultra-dark: #050506;
+            --card-glass: rgba(10, 10, 12, 0.45);
+            --border-glass: rgba(224, 172, 154, 0.08);
             
-            /* Paleta de acento premium (Oro rosa / Cobre moderno) */
-            --accent-primary: #e0ac9a; 
-            --accent-secondary: #c98c76;
-            --accent-glow: rgba(224, 172, 154, 0.15);
+            /* Paleta Oro Rosa / Bronce Lujoso */
+            --rose-gold-light: #e6bdae;
+            --rose-gold-main: #d19a86;
+            --rose-gold-dark: #a87361;
+            --glow-color: rgba(209, 154, 134, 0.2);
 
-            --text-main: #ffffff;
-            --text-muted: #8a8a91;
+            --text-pure: #ffffff;
+            --text-dim: #92929a;
             
-            --soft-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            --transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); /* Animación suave */
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif; /* Tipografía limpia y moderna */
+            font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background-color: var(--bg-dark);
-            /* Gradiente de fondo radial suave */
+            background-color: var(--bg-ultra-dark);
+            /* Fondo con gradientes de atmósfera profunda */
             background-image: 
-                radial-gradient(at 10% 10%, rgba(201, 140, 118, 0.08) 0px, transparent 50%),
-                radial-gradient(at 90% 90%, rgba(30, 30, 35, 0.3) 0px, transparent 50%);
-            color: var(--text-main);
+                radial-gradient(at 0% 0%, rgba(209, 154, 134, 0.05) 0px, transparent 40%),
+                radial-gradient(at 100% 100%, rgba(15, 15, 18, 0.8) 0px, transparent 50%);
+            color: var(--text-pure);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 25px;
+            padding: 20px;
             overflow-x: hidden;
         }
 
-        /* =========================================
-           CONTENEDOR MAESTRO (Glassmorphism)
-           ========================================= */
-        .master-container {
+        .master-wrapper {
             width: 100%;
-            max-width: 440px;
-            perspective: 1000px; /* Prepara para efectos 3D sutiles */
+            max-width: 430px;
         }
 
-        .profile-card {
-            background: var(--bg-card);
-            padding: 50px 35px 40px 35px;
-            border-radius: 35px; /* Bordes muy suaves */
-            backdrop-filter: blur(15px); /* Efecto vidrio esmerilado */
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--soft-shadow);
+        /* =========================================
+           TARJETA PRINCIPAL (Glassmorphism Avanzado)
+           ========================================= */
+        .lux-card {
+            background: var(--card-glass);
+            padding: 55px 35px 45px 35px;
+            border-radius: 40px;
+            backdrop-filter: blur(30px) saturate(120%);
+            -webkit-backdrop-filter: blur(30px) saturate(120%);
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
+                        inset 0 1px 0 rgba(255, 255, 255, 0.02);
             text-align: center;
             position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        /* Destello sutil de fondo en la tarjeta */
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.01) 0%, transparent 60%);
-            transform: rotate(30deg);
-            pointer-events: none;
         }
 
         /* =========================================
-           PERFIL (Estética Minimalista)
+           EFECTO ORBITAL DE LA AVATAR (Oro Rosa)
            ========================================= */
-        .profile-header {
-            margin-bottom: 35px;
+        .avatar-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px auto;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
         }
 
-        .avatar-wrapper {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .profile-img {
-            width: 115px;
-            height: 115px;
+        .profile-image {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid var(--glass-border);
-            transition: var(--transition);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 3;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
-        /* Anillo de acento dinámico alrededor de la foto */
-        .avatar-wrapper::after {
-            content: '';
+        /* Anillos orbitales animados en CSS */
+        .orbit-ring {
             position: absolute;
-            top: -6px; left: -6px; right: -6px; bottom: -6px;
             border-radius: 50%;
-            border: 2px solid var(--accent-primary);
-            opacity: 0.1;
-            transition: var(--transition);
-            transform: scale(1.05);
+            border: 1px solid var(--rose-gold-main);
+            opacity: 0.25;
+            z-index: 1;
+            animation: rotateOrbit 12s linear infinite;
         }
 
-        .profile-card:hover .avatar-wrapper::after {
-            opacity: 0.5;
-            transform: scale(1);
+        .orbit-1 {
+            width: 126px;
+            height: 126px;
+            border-style: dashed;
         }
 
-        h1 {
-            font-size: 1.75rem;
-            font-weight: 600;
-            letter-spacing: -0.5px; /* Tracking moderno */
-            background: linear-gradient(135deg, #fff 0%, var(--accent-primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; /* Gradiente en texto */
-            margin-bottom: 6px;
+        .orbit-2 {
+            width: 136px;
+            height: 136px;
+            opacity: 0.15;
+            border-width: 1.5px;
+            animation-duration: 20s;
+            animation-direction: reverse;
         }
 
-        .subtitle {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .bio {
-            font-size: 0.95rem;
-            color: #b0b0b5;
-            line-height: 1.6;
-            max-width: 320px;
-            margin: 0 auto;
-            font-weight: 300;
+        @keyframes rotateOrbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* =========================================
-           BOTONES (Neumorfismo Interactivo)
+           TEXTOS (Gradientes de Bronce)
            ========================================= */
-        .links-container {
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff 30%, var(--rose-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--rose-gold-main);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        /* =========================================
+           BOTONES INTERACTIVOS (Premium)
+           ========================================= */
+        .menu-links {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
         }
 
-        .btn-link {
+        .lux-btn {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Alineación moderna */
-            padding: 20px 25px;
+            justify-content: space-between;
+            padding: 18px 24px;
             text-decoration: none;
-            border-radius: 20px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            
-            /* Estilo Base: Neumorfismo Oscuro */
-            background: #09090b;
-            border: 1px solid rgba(255,255,255,0.01);
-            box-shadow: 
-                inset 2px 2px 5px rgba(0,0,0,0.2), 
-                inset -1px -1px 2px rgba(255,255,255,0.01);
+            border-radius: 18px;
+            background: rgba(18, 18, 22, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.01), 0 4px 10px rgba(0,0,0,0.3);
+            transition: var(--transition-smooth);
         }
 
-        /* Texto del botón */
-        .btn-text {
-            color: #d1d1d6;
-            font-size: 1.05rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            z-index: 2;
-            transition: var(--transition);
+        .lux-btn .btn-label {
+            color: #e1e1e6;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+            transition: var(--transition-smooth);
         }
 
-        /* Icono de flecha minimalista */
-        .btn-arrow {
-            color: #4a4a4e;
-            font-size: 0.8rem;
-            transform: translateX(0);
-            transition: var(--transition);
-            z-index: 2;
+        .lux-btn .btn-icon {
+            color: #4e4e54;
+            font-size: 0.85rem;
+            transition: var(--transition-smooth);
         }
 
-        /* EFECTO HOVER ÚNICO: Se vuelve blanco puro y 'brilla' */
-        .btn-link:hover {
+        /* Efecto Hover para botones estándar */
+        .lux-btn:hover {
             background: #ffffff;
-            border: 1px solid #ffffff;
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 15px 30px rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(255, 255, 255, 0.08);
         }
 
-        .btn-link:hover .btn-text {
+        .lux-btn:hover .btn-label, .lux-btn:hover .btn-icon {
             color: #000000;
         }
 
-        .btn-link:hover .btn-arrow {
-            color: #000000;
-            transform: translateX(4px);
+        /* BOTÓN DE ACENTO (Destacado - Colección "Genesis") */
+        .btn-featured {
+            background: linear-gradient(135deg, rgba(20, 20, 24, 0.8) 0%, rgba(10, 10, 12, 0.9) 100%);
+            border: 1px solid rgba(209, 154, 134, 0.15);
+            box-shadow: 0 0 20px var(--glow-color);
         }
 
-        /* BOTÓN DE ACENTO (Destacado): Neumorfismo de Color */
-        .btn-highlight {
-            background: linear-gradient(135deg, #121214 0%, #0a0a0c 100%);
-            border: 1px solid rgba(224, 172, 154, 0.08);
-            box-shadow: 
-                inset 2px 2px 5px rgba(0,0,0,0.3), 
-                0 0 15px var(--accent-glow);
+        .btn-featured .btn-label {
+            color: var(--rose-gold-light);
+            font-weight: 500;
         }
 
-        .btn-highlight .btn-text {
-            color: var(--accent-primary);
-        }
-
-        .btn-highlight .btn-arrow {
-            color: var(--accent-secondary);
+        .btn-featured .btn-icon {
+            color: var(--rose-gold-main);
         }
 
         /* Hover específico para el botón destacado */
-        .btn-highlight:hover {
-            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-            border: 1px solid var(--accent-primary);
-            box-shadow: 0 20px 40px var(--accent-glow);
+        .btn-featured:hover {
+            background: linear-gradient(135deg, var(--rose-gold-main) 0%, var(--rose-gold-dark) 100%);
+            border: 1px solid var(--rose-gold-light);
+            box-shadow: 0 15px 35px var(--glow-color);
         }
 
-        .btn-highlight:hover .btn-text,
-        .btn-highlight:hover .btn-arrow {
-            color: #000000;
+        .btn-featured:hover .btn-label, .btn-featured:hover .btn-icon {
+            color: #050506;
         }
 
         /* =========================================
-           FOOTER (Sutil)
+           FOOTER
            ========================================= */
         footer {
-            margin-top: 50px;
-            font-size: 0.7rem;
-            color: #4a4a4e;
-            letter-spacing: 2px;
+            margin-top: 45px;
+            font-size: 0.65rem;
+            color: #44444a;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            font-weight: 300;
-        }
-
-        /* =========================================
-           RESPONSIVE (Ajustes Móviles)
-           ========================================= */
-        @media (max-width: 400px) {
-            .profile-card {
-                padding: 40px 25px 30px 25px;
-                border-radius: 25px;
-            }
-            .profile-img {
-                width: 100px; height: 100px;
-            }
-            h1 { font-size: 1.5rem; }
-            .btn-link { padding: 18px 20px; }
-            .btn-text { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="master-container">
-        <div class="profile-card">
+    <div class="master-wrapper">
+        <div class="lux-card">
             
-            <header class="profile-header">
-                <div class="avatar-wrapper">
-                    <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&q=80" alt="Avatar Premium" class="profile-img">
-                </div>
-                <h1>Nombre del Creador</h1>
-                <p class="subtitle">Artista Digital & Visionario</p>
-                <p class="bio">Curando experiencias visuales de alto impacto para marcas y coleccionistas exigentes.</p>
-            </header>
+            <div class="avatar-container">
+                <div class="orbit-ring orbit-1"></div>
+                <div class="orbit-ring orbit-2"></div>
+                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&q=80" alt="Creador Ejecutivo" class="profile-image">
+            </div>
 
-            <nav class="links-container">
+            <h1>Nombre del Creador</h1>
+            <p class="tagline">Artista Digital & Visionario</p>
+            <p class="description">Curando experiencias visuales de alto impacto para marcas y coleccionistas exigentes.</p>
+
+            <nav class="menu-links">
                 
-                <a href="#" class="btn-link btn-highlight" target="_blank">
-                    <span class="btn-text">🌟 Adquiere la Colección 'Genesis'</span>
-                    <span class="btn-arrow">→</span>
+                <a href="#" class="lux-btn btn-featured" target="_blank">
+                    <span class="btn-label">🌟 Adquiere la Colección "Genesis"</span>
+                    <span class="btn-icon">→</span>
                 </a>
                 
-                <a href="#" class="btn-link" target="_blank">
-                    <span class="btn-text">📸 Portafolio de Fotografía</span>
-                    <span class="btn-arrow">→</span>
+                <a href="#" class="lux-btn" target="_blank">
+                    <span class="btn-label">📸 Portafolio de Fotografía</span>
+                    <span class="btn-icon">→</span>
                 </a>
                 
-                <a href="#" class="btn-link" target="_blank">
-                    <span class="btn-text">🎨 Galería de Arte en Foundation</span>
-                    <span class="btn-arrow">→</span>
+                <a href="#" class="lux-btn" target="_blank">
+                    <span class="btn-label">🎨 Galería de Arte en Foundation</span>
+                    <span class="btn-icon">→</span>
                 </a>
                 
-                <a href="#" class="btn-link" target="_blank">
-                    <span class="btn-text">📺 Masterclass de Edición Avanzada</span>
-                    <span class="btn-arrow">→</span>
+                <a href="#" class="lux-btn" target="_blank">
+                    <span class="btn-label">📺 Masterclass de Edición Avanzada</span>
+                    <span class="btn-icon">→</span>
                 </a>
                 
-                <a href="#" class="btn-link" target="_blank">
-                    <span class="btn-text">✉️ Consultoría Privada</span>
-                    <span class="btn-arrow">→</span>
+                <a href="#" class="lux-btn" target="_blank">
+                    <span class="btn-label">✉️ Consultoría Privada</span>
+                    <span class="btn-icon">→</span>
                 </a>
 
             </nav>
