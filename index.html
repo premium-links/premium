@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecosistema Digital Premium</title>
+    <title>Ecosistema Digital Pro | Competencia link.me</title>
+    <!-- Importamos tipografía de lujo: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Importamos estilos de Swiper.js para el carrusel táctil -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    
     <style>
         /* =========================================
-           VARIABLES Y DISEÑO MAESTRO
+           RESET Y ESTILOS MAESTROS (Ultra-Dark)
            ========================================= */
         :root {
-            --bg-ultra-dark: #050506;
-            --card-glass: rgba(10, 10, 12, 0.45);
-            --border-glass: rgba(224, 172, 154, 0.08);
+            --bg-ultra-dark: #070708;
+            --card-glass: rgba(10, 10, 12, 0.4);
+            --border-glass: rgba(224, 172, 154, 0.06);
             
-            /* Paleta Oro Rosa / Bronce Lujoso */
+            /* Paleta Oro Rosa / Bronce Sophisticada */
             --rose-gold-light: #e6bdae;
             --rose-gold-main: #d19a86;
             --rose-gold-dark: #a87361;
-            --glow-color: rgba(209, 154, 134, 0.2);
+            --glow-color: rgba(209, 154, 134, 0.15);
 
             --text-pure: #ffffff;
             --text-dim: #92929a;
@@ -36,10 +40,6 @@
 
         body {
             background-color: var(--bg-ultra-dark);
-            /* Fondo con gradientes de atmósfera profunda */
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(209, 154, 134, 0.05) 0px, transparent 40%),
-                radial-gradient(at 100% 100%, rgba(15, 15, 18, 0.8) 0px, transparent 50%);
             color: var(--text-pure);
             display: flex;
             justify-content: center;
@@ -47,24 +47,40 @@
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Foto de fondo premium con fade */
+        .background-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* IMPORTANTE: Cambiar por la foto de Ava Rose de image_6.png */
+            background: 
+                linear-gradient(180deg, rgba(7, 7, 8, 0.2) 0%, rgba(7, 7, 8, 0.8) 60%, var(--bg-ultra-dark) 100%),
+                url('https://via.placeholder.com/800x1200') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+            transition: var(--transition-smooth);
         }
 
         .master-wrapper {
             width: 100%;
-            max-width: 430px;
+            max-width: 420px;
+            z-index: 2;
+            perspective: 1000px;
         }
 
         /* =========================================
-           TARJETA PRINCIPAL (Glassmorphism Avanzado)
+           TARJETA PRINCIPAL (Glassmorphism)
            ========================================= */
-        .lux-card {
+        .profile-card {
             background: var(--card-glass);
             padding: 55px 35px 45px 35px;
             border-radius: 40px;
-            backdrop-filter: blur(30px) saturate(120%);
-            -webkit-backdrop-filter: blur(30px) saturate(120%);
+            backdrop-filter: blur(25px) saturate(110%);
+            -webkit-backdrop-filter: blur(25px) saturate(110%);
             border: 1px solid var(--border-glass);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 
                         inset 0 1px 0 rgba(255, 255, 255, 0.02);
             text-align: center;
             position: relative;
@@ -93,30 +109,18 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.5);
         }
 
-        /* Anillos orbitales animados en CSS */
+        /* Anillos orbitales animados */
         .orbit-ring {
             position: absolute;
             border-radius: 50%;
             border: 1px solid var(--rose-gold-main);
-            opacity: 0.25;
+            opacity: 0.2;
             z-index: 1;
-            animation: rotateOrbit 12s linear infinite;
+            animation: rotateOrbit 15s linear infinite;
         }
 
-        .orbit-1 {
-            width: 126px;
-            height: 126px;
-            border-style: dashed;
-        }
-
-        .orbit-2 {
-            width: 136px;
-            height: 136px;
-            opacity: 0.15;
-            border-width: 1.5px;
-            animation-duration: 20s;
-            animation-direction: reverse;
-        }
+        .orbit-1 { width: 126px; height: 126px; border-style: dashed; }
+        .orbit-2 { width: 136px; height: 136px; opacity: 0.1; border-width: 1.5px; animation-duration: 25s; animation-direction: reverse; }
 
         @keyframes rotateOrbit {
             from { transform: rotate(0deg); }
@@ -124,16 +128,16 @@
         }
 
         /* =========================================
-           TEXTOS (Gradientes de Bronce)
+           TEXTOS (Gradientes de Cobre)
            ========================================= */
         h1 {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 600;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff 30%, var(--rose-gold-light) 100%);
+            background: linear-gradient(135deg, #ffffff 40%, var(--rose-gold-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .tagline {
@@ -141,8 +145,8 @@
             color: var(--rose-gold-main);
             font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 15px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
         }
 
         .description {
@@ -150,7 +154,7 @@
             color: var(--text-dim);
             line-height: 1.6;
             font-weight: 300;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         /* =========================================
@@ -159,79 +163,220 @@
         .menu-links {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 15px;
+            margin-bottom: 40px;
         }
 
+        /* BOTÓN DE ACENTO (Destacado - Colección "Genesis") */
         .lux-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 18px 24px;
+            padding: 18px 22px;
             text-decoration: none;
-            border-radius: 18px;
-            background: rgba(18, 18, 22, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            box-shadow: inset 0 1px 1px rgba(255,255,255,0.01), 0 4px 10px rgba(0,0,0,0.3);
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(20, 20, 24, 0.7) 0%, rgba(10, 10, 12, 0.8) 100%);
+            border: 1px solid rgba(209, 154, 134, 0.1);
+            box-shadow: 0 0 15px var(--glow-color), inset 0 1px 1px rgba(255,255,255,0.01);
             transition: var(--transition-smooth);
         }
 
         .lux-btn .btn-label {
-            color: #e1e1e6;
+            color: var(--rose-gold-light);
             font-size: 1rem;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.2px;
             transition: var(--transition-smooth);
         }
 
         .lux-btn .btn-icon {
-            color: #4e4e54;
-            font-size: 0.85rem;
+            color: var(--rose-gold-main);
+            font-size: 0.8rem;
             transition: var(--transition-smooth);
         }
 
-        /* Efecto Hover para botones estándar */
+        /* Hover destacado */
         .lux-btn:hover {
-            background: #ffffff;
+            background: linear-gradient(135deg, var(--rose-gold-main) 0%, var(--rose-gold-dark) 100%);
+            border: 1px solid var(--rose-gold-light);
+            box-shadow: 0 15px 30px var(--glow-color);
             transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(255, 255, 255, 0.08);
         }
 
         .lux-btn:hover .btn-label, .lux-btn:hover .btn-icon {
-            color: #000000;
-        }
-
-        /* BOTÓN DE ACENTO (Destacado - Colección "Genesis") */
-        .btn-featured {
-            background: linear-gradient(135deg, rgba(20, 20, 24, 0.8) 0%, rgba(10, 10, 12, 0.9) 100%);
-            border: 1px solid rgba(209, 154, 134, 0.15);
-            box-shadow: 0 0 20px var(--glow-color);
-        }
-
-        .btn-featured .btn-label {
-            color: var(--rose-gold-light);
-            font-weight: 500;
-        }
-
-        .btn-featured .btn-icon {
-            color: var(--rose-gold-main);
-        }
-
-        /* Hover específico para el botón destacado */
-        .btn-featured:hover {
-            background: linear-gradient(135deg, var(--rose-gold-main) 0%, var(--rose-gold-dark) 100%);
-            border: 1px solid var(--rose-gold-light);
-            box-shadow: 0 15px 35px var(--glow-color);
-        }
-
-        .btn-featured:hover .btn-label, .btn-featured:hover .btn-icon {
             color: #050506;
+        }
+
+        /* =========================================
+           DROPDOWN DE SEGUIDORES DETALLADOS
+           ========================================= */
+        .followers-dropdown-container {
+            width: 100%;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            background: rgba(18, 18, 22, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            cursor: pointer;
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.01), 0 4px 10px rgba(0,0,0,0.3);
+            transition: var(--transition-smooth);
+        }
+
+        .dropdown-trigger:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .dropdown-trigger span {
+            color: var(--text-pure);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        /* Icono de flecha animado */
+        .dropdown-trigger-icon {
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            transition: var(--transition-smooth);
+        }
+
+        .dropdown-trigger.open .dropdown-trigger-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Contenido detallado del dropdown */
+        .dropdown-content {
+            display: none;
+            padding: 20px 0 10px 0;
+            list-style: none;
+            text-align: left;
+            transition: var(--transition-smooth);
+        }
+
+        .followers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .followers-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #d1d1d6;
+        }
+
+        .social-icon-wrapper {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1rem;
+        }
+
+        .followers-count {
+            color: var(--text-pure);
+            font-weight: 500;
+            margin-left: auto; /* Alinea los números a la derecha */
+        }
+
+        /* Iconos de Ava Rose */
+        .social-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .social-icon-link {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex; justify-content: center; align-items: center;
+            color: var(--text-pure);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+        }
+
+        .social-icon-link:hover {
+            background: var(--text-pure);
+            color: var(--bg-ultra-dark);
+            transform: scale(1.1);
+        }
+
+        /* =========================================
+           CARRUSEL SWIPER DE IMÁGENES (Táctil)
+           ========================================= */
+        .carousel-container {
+            width: 100%;
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px; /* Ancho de cada diapositiva */
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-smooth);
+        }
+
+        /* Efecto de elevación al pasar el cursor por encima del carrusel */
+        .swiper-slide:hover .carousel-img {
+            border: 1px solid #ffffff;
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05);
+            transform: scale(1.02);
+        }
+
+        /* Botones de navegación de Swiper */
+        .swiper-button-next, .swiper-button-prev {
+            color: var(--text-pure);
+            font-size: 1rem;
+            background: rgba(10, 10, 12, 0.4);
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 1rem; font-weight: 700;
         }
 
         /* =========================================
            FOOTER
            ========================================= */
         footer {
-            margin-top: 45px;
+            margin-top: 40px;
             font-size: 0.65rem;
             color: #44444a;
             letter-spacing: 3px;
@@ -241,48 +386,96 @@
 </head>
 <body>
 
+    <div class="background-overlay"></div>
+
     <div class="master-wrapper">
-        <div class="lux-card">
+        <div class="profile-card">
             
+            <!-- Estructura del Perfil con Anillos Orbitales -->
             <div class="avatar-container">
                 <div class="orbit-ring orbit-1"></div>
                 <div class="orbit-ring orbit-2"></div>
-                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&q=80" alt="Creador Ejecutivo" class="profile-image">
+                <!-- URL de foto de Ava Rose (puedes cambiarla por la de tu cliente) -->
+                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&q=80" alt="Ava Rose Premium" class="profile-image">
             </div>
 
-            <h1>Nombre del Creador</h1>
-            <p class="tagline">Artista Digital & Visionario</p>
-            <p class="description">Curando experiencias visuales de alto impacto para marcas y coleccionistas exigentes.</p>
+            <!-- Información Principal -->
+            <h1>Ava Rose</h1>
+            <p class="tagline">Modelo Fitness & Pro Influencer</p>
+            <p class="description">Compitiendo con link.me. Diseño de ultra-lujo y características de alto nivel.</p>
 
+            <!-- Menú de Enlaces Estilizados -->
             <nav class="menu-links">
                 
-                <a href="#" class="lux-btn btn-featured" target="_blank">
-                    <span class="btn-label">🌟 Adquiere la Colección "Genesis"</span>
+                <!-- Enlace Destacado (Oro Rosa / Bronce) -->
+                <a href="#" class="lux-btn" target="_blank">
+                    <span class="btn-label">🌟 Exclusive Content (Fanfix)</span>
                     <span class="btn-icon">→</span>
                 </a>
                 
-                <a href="#" class="lux-btn" target="_blank">
-                    <span class="btn-label">📸 Portafolio de Fotografía</span>
-                    <span class="btn-icon">→</span>
-                </a>
-                
-                <a href="#" class="lux-btn" target="_blank">
-                    <span class="btn-label">🎨 Galería de Arte en Foundation</span>
-                    <span class="btn-icon">→</span>
-                </a>
-                
-                <a href="#" class="lux-btn" target="_blank">
-                    <span class="btn-label">📺 Masterclass de Edición Avanzada</span>
-                    <span class="btn-icon">→</span>
-                </a>
-                
-                <a href="#" class="lux-btn" target="_blank">
-                    <span class="btn-label">✉️ Consultoría Privada</span>
-                    <span class="btn-icon">→</span>
-                </a>
+                <!-- Lista Desplegable Detailed Followers de Ava Rose -->
+                <div class="followers-dropdown-container">
+                    <div class="dropdown-trigger" id="dropdownTrigger">
+                        <span>2.0M Total Followers</span>
+                        <span class="dropdown-trigger-icon">▼</span>
+                    </div>
+                    <ul class="dropdown-content" id="dropdownContent">
+                        <li class="followers-list">
+                            <div class="followers-item">
+                                <div class="social-icon-wrapper">T</div>
+                                <span>Threads (avarose.fit)</span>
+                                <span class="followers-count">480K</span>
+                            </div>
+                            <div class="followers-item">
+                                <div class="social-icon-wrapper">I</div>
+                                <span>Instagram (avarose.fit)</span>
+                                <span class="followers-count">947K</span>
+                            </div>
+                            <div class="followers-item">
+                                <div class="social-icon-wrapper">S</div>
+                                <span>Snapchat (avarose.fit)</span>
+                                <span class="followers-count">11.7K</span>
+                            </div>
+                            <div class="followers-item">
+                                <div class="social-icon-wrapper">X</div>
+                                <span>X (mommy_mewtwo)</span>
+                                <span class="followers-count">129K</span>
+                            </div>
+                            <div class="followers-item">
+                                <div class="social-icon-wrapper">t</div>
+                                <span>Tik Tok (mommy_mewtwo)</span>
+                                <span class="followers-count">702K</span>
+                            </div>
+                        </li>
+                        
+                        <!-- Iconos de Ava Rose -->
+                        <div class="social-icons-row">
+                            <a href="#" class="social-icon-link">T</a>
+                            <a href="#" class="social-icon-link">I</a>
+                            <a href="#" class="social-icon-link">S</a>
+                            <a href="#" class="social-icon-link">X</a>
+                            <a href="#" class="social-icon-link">t</a>
+                        </div>
+                    </ul>
+                </div>
 
             </nav>
 
+            <!-- Carrusel Swiper de Imágenes (Táctil) -->
+            <div class="carousel-container swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- IMPORTANTE: Cambiar por los enlaces reales de Ava de image_8.png -->
+                    <div class="swiper-slide"><img src="https://via.placeholder.com/200x200" alt="Ava 1" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="https://via.placeholder.com/200x200" alt="Ava 2" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="https://via.placeholder.com/200x200" alt="Ava 3" class="carousel-img"></div>
+                    <div class="swiper-slide"><img src="https://via.placeholder.com/200x200" alt="Ava 4" class="carousel-img"></div>
+                </div>
+                <!-- Botones de Swiper -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <!-- Pie de Página -->
             <footer>
                 Edición Exclusiva // MMXXVI
             </footer>
@@ -290,5 +483,53 @@
         </div>
     </div>
 
+    <!-- Importamos el script de Swiper.js -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.css"></script>
+    
+    <script>
+        // =========================================
+        // JAVASCRIPT DEL DROPDOWN DE SEGUIDORES
+        // =========================================
+        const trigger = document.getElementById('dropdownTrigger');
+        const content = document.getElementById('dropdownContent');
+
+        trigger.addEventListener('click', () => {
+            trigger.classList.toggle('open');
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        });
+
+        // JAVASCRIPT DE LOS SEGUIDORES REALES (Modo Pro)
+        // IMPORTANTE: Esto es visual. Para tener "seguidores reales en tiempo real",
+        // se necesita un backend que haga llamadas a las APIs de Instagram/TikTok/etc.
+        const simulateRealTimeFollowers = () => {
+            // Reemplazar con llamadas reales a la API si hay un backend disponible
+            console.log("Simulando seguidores en tiempo real...");
+        };
+        simulateRealTimeFollowers();
+
+        // =========================================
+        // JAVASCRIPT DEL CARRUSEL TÁCTIL (Swiper.js)
+        // =========================================
+        const swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto', // Se ajusta al tamaño de cada diapositiva
+            spaceBetween: 10,     // Espacio entre diapositivas
+            grabCursor: true,     // Cambia el cursor a una mano al pasar por encima
+            loop: true,           // Bucle continuo
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+
 </body>
 </html>
+        
